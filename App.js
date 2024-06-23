@@ -1,25 +1,20 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState, useEffect } from "react";
 
-function App() {
+const App = () => {
+  const[currentTime, setCurrentime]=useState(new Date().toLocalTimeString())
+  useEffect(()=>{
+    setInterval(()=>{
+      setCurrentime(new Date().toLocalTimeString())
+    },1000);
+    console.log("Já jsem uvnitř useEffectu");
+  })
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <h1>Aktuální čas</h1>
+      <p>{currentTime}</p>
+      {console.log("Text uvnitř return");}
     </div>
   );
-}
+};
 
 export default App;
